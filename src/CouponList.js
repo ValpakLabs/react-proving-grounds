@@ -9,10 +9,10 @@ class CouponList extends Component {
       header: {
         display: 'flex',
         justifyContent: 'space-between',
-        padding: '10px 0',
+        padding: '10px 0'
       },
       geoForm: {
-        display: 'flex',
+        display: 'flex'
       }
     };
     return (
@@ -22,8 +22,8 @@ class CouponList extends Component {
           onGeoChange={geo => this.handleGeoChange(geo)}
           onInputChange={t => this.handleInputChange(t)}
           currentPage={this.props.currentPage}
-          onPrevClick={() => this.handlePrevClick()}
-          onNextClick={() => this.handleNextClick()} />
+          onPrevClick={page => this.handlePrevClick(page)}
+          onNextClick={page => this.handleNextClick(page)} />
         <div>
           {this.props.coupons.map((coupon, index) =>
             <Coupon
@@ -40,12 +40,12 @@ class CouponList extends Component {
     this.props.onCouponClick(coupon);
   }
 
-  handlePrevClick(e) {
-    this.props.onPrevClick();
+  handlePrevClick(page) {
+    this.props.onPrevClick(page);
   }
 
-  handleNextClick(e) {
-    this.props.onNextClick();
+  handleNextClick(page) {
+    this.props.onNextClick(page);
   }
 
   handleGeoChange(geo) {
@@ -60,16 +60,21 @@ class CouponList extends Component {
 CouponList.propTypes = {
   coupons: PropTypes.array,
   geo: PropTypes.string,
-  onGeoChange: PropTypes.fn,
-  onInputChange: PropTypes.fn
+  onGeoChange: PropTypes.func,
+  onInputChange: PropTypes.func,
+  onNextClick: PropTypes.func,
+  onPrevClick: PropTypes.func,
+  onCouponClick: PropTypes.func
 };
 
 CouponList.defaultProps = {
   coupons: [],
   geo: '90001',
-  key: null,
   onGeoChange: e => null,
   onInputChange: e => null,
+  onNextClick: e => null,
+  onPrevClick: e => null,
+  onCouponClick: e => null
 };
 
 export default CouponList;

@@ -1,14 +1,16 @@
 import 'isomorphic-fetch';
 import React from 'react';
 import { render } from 'react-dom';
-import App from './App';
 import { Router, Route, browserHistory } from 'react-router';
+import App from './App';
+import AllListingsPage from './AllListingsPage';
+import ListingPage from './ListingPage';
 
 let component = (
   <Router history={browserHistory}>
-    <Route path='/' component={App}>
-      <Route path='/' component={CouponList}></Route>
-      <Route path='/:id' component={CouponRedemption}></Route>
+    <Route component={App}>
+      <Route path='/' component={AllListingsPage}></Route>
+      <Route path='/:cid' component={ListingPage}></Route>
     </Route>
   </Router>
 );

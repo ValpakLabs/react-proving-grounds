@@ -40,11 +40,11 @@ class CouponListHeader extends Component {
   }
 
   handlePrevClick(e) {
-    this.props.onPrevClick();
+    this.props.onPrevClick(this.props.currentPage - 1);
   }
 
   handleNextClick(e) {
-    this.props.onNextClick();
+    this.props.onNextClick(this.props.currentPage + 1);
   }
 
   handleGeoChange(e) {

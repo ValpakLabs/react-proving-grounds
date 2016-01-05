@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import CouponList from './CouponList';
 
 class Coupon extends Component {
@@ -36,6 +37,7 @@ class Coupon extends Component {
         onMouseLeave={e => this.setState({isHovered: false})}>
         <div style={styles.businessName}>{coupon.businessName}</div>
         <div style={styles.couponTitle}>{coupon.title}</div>
+        <Link to={`/${coupon.componentUID}`}>View Coupon</Link>
       </div>
     );
   }
@@ -46,11 +48,11 @@ class Coupon extends Component {
 }
 
 Coupon.propTypes = {
-  coupons: PropTypes.object
+  coupon: PropTypes.object
 };
 
 Coupon.defaultProps = {
-  coupons: {},
+  coupon: {},
 };
 
 export default Coupon;
