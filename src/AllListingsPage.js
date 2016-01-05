@@ -47,7 +47,6 @@ class AllListingsPage extends Component {
   }
 
   handleNextClick(page) {
-    // console.log(page);
     this.context.router.push(`?p=${page}`);
   }
 

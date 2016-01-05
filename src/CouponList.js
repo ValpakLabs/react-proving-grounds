@@ -72,9 +72,9 @@ CouponList.defaultProps = {
   geo: '90001',
   onGeoChange: e => null,
   onInputChange: e => null,
+  onCouponClick: e => null,
   onNextClick: e => null,
-  onPrevClick: e => null,
-  onCouponClick: e => null
+  onPrevClick: e => null
 };
 
 export default CouponList;
