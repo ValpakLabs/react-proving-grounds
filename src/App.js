@@ -12,9 +12,8 @@ class App extends Component {
   render() {
     const styles = {
       app: {
-        display: 'flex',
-        justifyContent: 'center',
-        padding: 40
+        padding: 30,
+        display: 'flex'
       }
     };
 

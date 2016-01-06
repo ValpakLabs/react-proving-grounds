@@ -13,31 +13,52 @@ class Coupon extends Component {
   render() {
     const { coupon } = this.props;
     const styles = {
-      listing: {
-        background: this.state.isHovered ? 'lightgrey' : 'white',
+      coupon: {
+        background: this.state.isHovered ? '#eee' : '#fff',
+        border: 'solid 1px #00a0df',
+        borderRadius: 3,
         marginBottom: 10,
         padding: 10
       },
+      body: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+      },
       businessName: {
-        fontWeight: 700,
         fontSize: 14
       },
       couponTitle: {
-        fontWeight: 100,
+        fontWeight: 300,
         fontSize: 22,
         lineHeight: '30px'
+      },
+      viewBtn: {
+        background: '#82bc00',
+        border: 'solid 1px #00a0df',
+        borderRadius: 3,
+        marginLeft: 25,
+        padding: '5px 9px',
+        textDecoration: 'none'
       }
     };
 
     return (
-      <div
-        style={styles.listing}
+      <div style={styles.coupon}
         onClick={e => this.handleCouponClick()}
         onMouseEnter={e => this.setState({isHovered: true})}
         onMouseLeave={e => this.setState({isHovered: false})}>
-        <div style={styles.businessName}>{coupon.businessName}</div>
-        <div style={styles.couponTitle}>{coupon.title}</div>
-        <Link to={`/${coupon.componentUID}`}>View Coupon</Link>
+
+        <div style={styles.body}>
+          <div>
+            <div style={styles.businessName}
+              dangerouslySetInnerHTML={{__html: coupon.businessName}} />
+            <div style={styles.couponTitle}
+              dangerouslySetInnerHTML={{__html: coupon.title}} />
+          </div>
+          <Link style={styles.viewBtn} to={`/${coupon.componentUID}`}>View</Link>
+        </div>
+
       </div>
     );
   }
