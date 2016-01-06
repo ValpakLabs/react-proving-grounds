@@ -6,12 +6,18 @@ class Coupon extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isHovered: false,
+      isHovered: false
     };
+  }
+
+  componentDidMount() {
+    if (this.props.print)
+      setTimeout(function(){window.print();}, 1000);
   }
 
   render() {
     const { coupon } = this.props;
+    const print = this.props.print;
     const styles = {
       coupon: {
         background: this.state.isHovered ? '#eee' : '#fff',
@@ -23,15 +29,21 @@ class Coupon extends Component {
       body: {
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        print: {
+          padding: 60,
+          width: 800
+        }
       },
       businessName: {
-        fontSize: 14
+        fontSize: 12,
+        textTransform: 'uppercase'
       },
       couponTitle: {
         fontWeight: 300,
         fontSize: 22,
-        lineHeight: '30px'
+        lineHeight: '30px',
+        textTransform: 'capitalize'
       },
       viewBtn: {
         background: '#82bc00',
@@ -39,26 +51,30 @@ class Coupon extends Component {
         borderRadius: 3,
         marginLeft: 25,
         padding: '5px 9px',
-        textDecoration: 'none'
+        textDecoration: 'none',
+        minWidth: 100,
+        display: print ? 'none' : 'block'
       }
     };
 
     return (
-      <div style={styles.coupon}
-        onClick={e => this.handleCouponClick()}
-        onMouseEnter={e => this.setState({isHovered: true})}
-        onMouseLeave={e => this.setState({isHovered: false})}>
+      <div>
+        <div style={styles.coupon}
+          onClick={e => this.handleCouponClick()}
+          onMouseEnter={e => this.setState({isHovered: print ? false : true})}
+          onMouseLeave={e => this.setState({isHovered: false})}>
 
-        <div style={styles.body}>
-          <div>
-            <div style={styles.businessName}
-              dangerouslySetInnerHTML={{__html: coupon.businessName}} />
-            <div style={styles.couponTitle}
-              dangerouslySetInnerHTML={{__html: coupon.title}} />
+          <div style={print ? styles.body.print : styles.body}>
+            <div>
+              <div style={styles.businessName}
+                dangerouslySetInnerHTML={{__html: coupon.businessName}} />
+              <div style={styles.couponTitle}
+                dangerouslySetInnerHTML={{__html: coupon.title}} />
+            </div>
+            <Link style={styles.viewBtn} to={`/${coupon.componentUID}`}>Use Coupon</Link>
           </div>
-          <Link style={styles.viewBtn} to={`/${coupon.componentUID}`}>View</Link>
-        </div>
 
+        </div>
       </div>
     );
   }
@@ -67,6 +83,12 @@ class Coupon extends Component {
     this.props.onCouponClick(this.props.coupon);
   }
 }
+
+// {(() => {
+//   if (print) {
+//     return <a className='noprint' style={styles.viewBtn} href='javascript:window.print()'>Print</a>;
+//   }
+// })()}
 
 Coupon.propTypes = {
   coupon: PropTypes.object

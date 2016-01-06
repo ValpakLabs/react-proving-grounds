@@ -23,3 +23,13 @@ body, button, input, textarea {
 a:visited {
   color: inherit;
 }
+
+@media print {
+  body {
+    background: none;
+  }
+
+  .noprint {
+    display: none;
+  }
+}

@@ -14,14 +14,15 @@ class ListingPage extends Component {
   }
 
   render() {
-    console.log(this.state.listing);
+    // console.log(this.state.listing);
+    // console.log(this.props.location);
     const styles = {
 
     };
 
     return (
       <div>
-        <Coupon coupon={this.state.listing} />
+        <Coupon print='true' coupon={this.state.listing} />
       </div>
     );
   }
