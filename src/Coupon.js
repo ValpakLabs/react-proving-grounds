@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
 import CouponList from './CouponList';
 
 class Coupon extends Component {
@@ -12,7 +11,7 @@ class Coupon extends Component {
 
   componentDidMount() {
     if (this.props.print)
-      setTimeout(function(){window.print();}, 1000);
+      setTimeout(function() {window.print();}, 1000);
   }
 
   render() {
@@ -71,7 +70,7 @@ class Coupon extends Component {
               <div style={styles.couponTitle}
                 dangerouslySetInnerHTML={{__html: coupon.title}} />
             </div>
-            <Link style={styles.viewBtn} to={`/${coupon.componentUID}`}>Use Coupon</Link>
+            <a style={styles.viewBtn} href={`/${coupon.componentUID}`}>Use Coupon</a>
           </div>
 
         </div>

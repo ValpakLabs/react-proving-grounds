@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
 import CouponList from './CouponList';
 
 class AllListingsPage extends Component {
@@ -62,10 +61,6 @@ class AllListingsPage extends Component {
             currentPage={currentPage}
             onPrevClick={page => this.handlePrevClick(page)}
             onNextClick={page => this.handleNextClick(page)} />
-        </div>
-
-        <div style={styles.adSpace}>
-          <Link style={styles.viewBtn} to='/editor'>Check Out Our Groovy Editor!</Link>
         </div>
       </div>
     );

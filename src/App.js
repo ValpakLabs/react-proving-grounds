@@ -19,7 +19,7 @@ class App extends Component {
 
     return (
       <div style={styles.app}>
-        {this.props.children}
+        Hello, App!
       </div>
     );
   }
